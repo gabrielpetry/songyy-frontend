@@ -3,11 +3,18 @@ import { Routes, RouterModule } from "@angular/router";
 import { PlaylistsComponent } from "./playlists/playlists.component";
 import { PlaylistManagerComponent } from "./playlist-manager/playlist-manager.component";
 import { LoginComponent } from "./login/login.component";
+import { AuthGuard } from "./guards/auth.guard";
+import { AuthService } from "./login/auth.service";
 
 const routes: Routes = [
   { path: "", component: LoginComponent },
-  { path: "playlist", component: PlaylistsComponent },
-  { path: "playlist/:id", component: PlaylistManagerComponent }
+  { path: "login", component: LoginComponent },
+  { path: "playlist", component: PlaylistsComponent, canActivate: [AuthGuard] },
+  {
+    path: "playlist/:id",
+    component: PlaylistManagerComponent,
+    canActivate: [AuthGuard, AuthService]
+  }
 ];
 
 @NgModule({

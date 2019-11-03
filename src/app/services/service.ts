@@ -7,11 +7,18 @@ export class Service {
   // private readonly API_URL = "http://localhost:3333";
   private readonly API_URL = "http://gabrielpetry.com.br:21142";
 
-  private readonly token = "obsfuscated";
+  // private readonly token = "obsfuscated";
+  private token: string = localStorage.getItem("token");
+
+  setToken(token: string): void {
+    this.token = token;
+    return;
+  }
 
   constructor(protected http: HttpClient) {}
 
   protected sendGetRequest<TypeObject>(endpoint: string) {
+    console.log("token", this.token);
     return this.http.get<TypeObject>(
       `${this.API_URL}/${endpoint}`,
       this.authorizationHeader()
