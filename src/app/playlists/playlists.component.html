@@ -14,13 +14,10 @@
 
   <div class="form-group">
     <label for="guild">Guild To create:</label>
-    <select required name="guild" [(ngModel)]="formInfo.guild_id">
-      <option
-        [selected]="true"
-        *ngFor="let guild of guilds"
-        [value]="guild._id"
-        >{{ guild["guild_name"] }}</option
-      >
+    <select required name="guildId" [(ngModel)]="formInfo.guildId">
+      <option *ngFor="let guild of guilds" [value]="guild._id">{{
+        guild["guild_name"]
+      }}</option>
     </select>
   </div>
 
@@ -40,7 +37,7 @@
       <td>{{ playlist.name }}</td>
       <td>{{ playlist.comment }}</td>
       <td>
-        <a href="/playlist/{{ playlist.name }}">Modify songs</a>
+        <a routerLink="{{ playlist.name }}">Modify songs</a>
       </td>
     </tr>
   </tbody>
