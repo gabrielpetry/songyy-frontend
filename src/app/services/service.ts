@@ -15,6 +15,10 @@ export class Service {
     return;
   }
 
+  getToken(): string {
+    return this.token;
+  }
+
   constructor(protected http: HttpClient) {}
 
   protected sendGetRequest<TypeObject>(endpoint: string) {
