@@ -13,9 +13,7 @@ export class PlaylistManagerComponent implements OnInit {
   songs: any;
   selectedVideo: any;
   // playlistName: string;
-  formInfo: any = {
-    youtube_link: "https://www.youtube.com/watch?v=2zlRRb_U068"
-  };
+  formInfo: any = {};
   playlistName = this.route.snapshot.paramMap.get("id");
   id: string;
 
