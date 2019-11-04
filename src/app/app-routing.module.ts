@@ -13,7 +13,7 @@ const routes: Routes = [
   {
     path: "playlist/:id",
     component: PlaylistManagerComponent,
-    canActivate: [AuthGuard, AuthService]
+    canActivate: [AuthGuard]
   }
 ];
 
