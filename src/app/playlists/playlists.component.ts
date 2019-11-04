@@ -41,10 +41,10 @@ export class PlaylistsComponent implements OnInit {
   }
 
   saveNewPlaylist() {
-    const { comment, name, guild_id } = this.formInfo;
+    const { comment, name, guildId } = this.formInfo;
     console.log(this.formInfo);
     this.playlistService
-      .saveNewPlaylist({ comment, name, guild_id })
+      .saveNewPlaylist({ comment, name, guild_id: guildId })
       .subscribe(data => {
         this.updatePlaylists();
       });
