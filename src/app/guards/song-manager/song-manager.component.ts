@@ -29,7 +29,7 @@ export class SongManagerComponent implements OnInit {
   }
 
   updatePlaylist() {
-    this.playlistService.getSongs(this.playlistName).subscribe(data => {
+    this.playlistService.getPlaylistSongs(this.playlistName).subscribe(data => {
       console.log("updated songs in playlist", data);
       this.songs = data[0].songs;
       this.id = data[0]._id;

@@ -14,8 +14,8 @@ export class PlaylistsService extends Service {
   get(): any {
     return this.sendGetRequest<Playlist[]>("playlists");
   }
-  getSongs(playlistName: string): Observable<Playlist[]> {
-    return this.sendGetRequest<Playlist[]>(`playlists/${playlistName}`);
+  getPlaylistSongs(playlistName: string): Observable<Playlist> {
+    return this.sendGetRequest<Playlist>(`playlists/${playlistName}`);
   }
 
   saveNewPlaylist({ name, comment, guild_id }) {
