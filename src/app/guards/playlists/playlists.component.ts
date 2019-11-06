@@ -45,8 +45,6 @@ export class PlaylistsComponent implements OnInit {
     console.log(this.formInfo);
     this.playlistService
       .saveNewPlaylist({ comment, name, guild_id: guildId })
-      .subscribe(data => {
-        this.updatePlaylists();
-      });
+      .subscribe(data => this.updatePlaylists());
   }
 }
