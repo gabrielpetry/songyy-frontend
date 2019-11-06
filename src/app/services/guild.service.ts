@@ -1,9 +1,9 @@
 import { Injectable } from "@angular/core";
-import { Playlist } from "./playlist";
+import { Playlist } from "../models/playlist";
 import { Observable } from "rxjs";
 import { Service } from "./service";
 import { HttpClient } from "@angular/common/http";
-import { Guild } from "./guild";
+import { Guild } from "../models/guild";
 
 @Injectable({
   providedIn: "root"

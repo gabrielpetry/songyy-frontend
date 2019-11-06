@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { Playlist } from "./playlist";
+import { Playlist } from "../models/playlist";
 import { Observable } from "rxjs";
 import { Service } from "./service";
 

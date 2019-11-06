@@ -1,8 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { PlaylistsService } from "../../services/playlists.service";
-import { Playlist } from "../../services/playlist";
-import { Guild } from "../../services/guild";
+import { Playlist } from "../../models/playlist";
+import { Guild } from "../../models/guild";
 import { GuildService } from "../../services/guild.service";
 
 @Component({
