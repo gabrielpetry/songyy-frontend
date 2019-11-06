@@ -18,14 +18,21 @@ export class SongsService extends Service {
     });
   }
 
-  toggleSongStatus(_id, status) {
+  toggleSongStatus(_id: string, status: number) {
     return this.sendPutRequest<Song[]>("songs", {
       _id,
       active: !status
     });
   }
 
+  updateSongOrder(_id: string, order: number) {
+    return this.sendPutRequest<Song>("songs", {
+      _id,
+      order
+    });
+  }
+
   deleteSong(_id) {
-    return this.sendDeleteRequest<Song[]>("songs", _id);
+    return this.sendDeleteRequest<Song>("songs", _id);
   }
 }
