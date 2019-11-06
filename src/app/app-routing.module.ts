@@ -1,7 +1,7 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import { PlaylistsComponent } from "./playlists/playlists.component";
-import { SongManagerComponent } from "./song-manager/song-manager.component";
+import { SongManagerComponent } from "./guards/song-manager/song-manager.component";
 import { LoginComponent } from "./login/login.component";
 import { AuthGuard } from "./guards/auth.guard";
 import { AuthService } from "./login/auth.service";
