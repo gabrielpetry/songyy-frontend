@@ -1,9 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { PlaylistsService } from "../services/playlists.service";
-import { Playlist } from "../services/playlist";
-import { Guild } from "../services/guild";
-import { GuildService } from "../services/guild.service";
+import { PlaylistsService } from "../../services/playlists.service";
+import { Playlist } from "../../services/playlist";
+import { Guild } from "../../services/guild";
+import { GuildService } from "../../services/guild.service";
 
 @Component({
   selector: "app-playlists",
