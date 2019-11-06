@@ -1,7 +1,7 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import { PlaylistsComponent } from "./playlists/playlists.component";
-import { PlaylistManagerComponent } from "./song-manager/playlist-manager.component";
+import { SongManagerComponent } from "./song-manager/song-manager.component";
 import { LoginComponent } from "./login/login.component";
 import { AuthGuard } from "./guards/auth.guard";
 import { AuthService } from "./login/auth.service";
@@ -12,7 +12,7 @@ const routes: Routes = [
   { path: "playlist", component: PlaylistsComponent, canActivate: [AuthGuard] },
   {
     path: "playlist/:id",
-    component: PlaylistManagerComponent,
+    component: SongManagerComponent,
     canActivate: [AuthGuard]
   }
 ];

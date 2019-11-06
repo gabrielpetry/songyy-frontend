@@ -5,11 +5,11 @@ import { SongsService } from "../services/songs.service";
 import { DomSanitizer } from "@angular/platform-browser";
 
 @Component({
-  selector: "app-playlist-manager",
-  templateUrl: "./playlist-manager.component.html",
-  styleUrls: ["./playlist-manager.component.styl"]
+  selector: "app-song-manager",
+  templateUrl: "./song-manager.component.html",
+  styleUrls: ["./song-manager.component.styl"]
 })
-export class PlaylistManagerComponent implements OnInit {
+export class SongManagerComponent implements OnInit {
   songs: any;
   selectedVideo: any;
   // playlistName: string;

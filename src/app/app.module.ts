@@ -6,7 +6,7 @@ import { AppComponent } from "./app.component";
 import { PlaylistsComponent } from "./playlists/playlists.component";
 import { HttpClientModule } from "@angular/common/http";
 import { FormsModule } from "@angular/forms";
-import { PlaylistManagerComponent } from "./song-manager/playlist-manager.component";
+import { SongManagerComponent } from "./song-manager/song-manager.component";
 import { LoginComponent } from "./login/login.component"; // Adicionei aqui
 import { AuthService } from "./login/auth.service";
 import { AuthGuard } from "./guards/auth.guard";
@@ -15,7 +15,7 @@ import { AuthGuard } from "./guards/auth.guard";
   declarations: [
     AppComponent,
     PlaylistsComponent,
-    PlaylistManagerComponent,
+    SongManagerComponent,
     LoginComponent
   ],
   imports: [BrowserModule, FormsModule, AppRoutingModule, HttpClientModule],
