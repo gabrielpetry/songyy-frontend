@@ -11,7 +11,7 @@ import { DomSanitizer } from "@angular/platform-browser";
 })
 export class SongManagerComponent implements OnInit {
   songs: any;
-  selectedVideo: any;
+  selectedVideo: any = "";
   // playlistName: string;
   formInfo: any = {};
   playlistName = this.route.snapshot.paramMap.get("id");
@@ -52,7 +52,8 @@ export class SongManagerComponent implements OnInit {
 
   toggleSongStatus(_id, active) {
     this.songService.toggleSongStatus(_id, active).subscribe(data => {
-      this.updatePlaylist();
+      // this.updatePlaylist();
+      this.songs = this.changeSongPropertie(_id, "active", !active);
     });
   }
 
@@ -60,7 +61,33 @@ export class SongManagerComponent implements OnInit {
     console.log("removendo");
     this.songService.deleteSong(_id).subscribe(data => {
       console.log(data);
-      this.updatePlaylist();
+      // this.updatePlaylist();
+      this.songs = this.songs.filter(song => song._id != _id);
     });
+  }
+
+  changeSongPropertie(_id: string, propertie: any, newValue: any): any {
+    return this.songs.map(song => {
+      if (song._id == _id) {
+        song[propertie] = newValue;
+        return song;
+      }
+      return song;
+    });
+  }
+
+  changeSongOrder(_id: string) {
+    const newSongOrderString = prompt("What the new order for this song?");
+    // console.log(newOrder);
+    const newSongOrderNumber: number = parseInt(newSongOrderString);
+    if (isNaN(newSongOrderNumber)) {
+      return this.changeSongOrder(_id);
+    }
+
+    this.songService
+      .updateSongOrder(_id, newSongOrderNumber)
+      .subscribe(data => {
+        this.songs = this.changeSongPropertie(_id, "order", newSongOrderNumber);
+      });
   }
 }

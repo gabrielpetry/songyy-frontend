@@ -28,6 +28,7 @@
 
 <h3>Song preview</h3>
 <iframe
+  ng-if="selectedVideo"
   width="360"
   height="215"
   [src]="selectedVideo"
@@ -53,10 +54,13 @@
       <td>{{ song.comment }}</td>
       <td>
         <button class="btn" (click)="toggleSongStatus(song._id, song.active)">
-          toggleActive
+          ToggleSongStatus
         </button>
         <button class="btn btn-danger" (click)="deleteSong(song._id)">
           Remove
+        </button>
+        <button class="btn" (click)="changeSongOrder(song._id)">
+          ChangeOrder
         </button>
         <button class="btn" (click)="changeSelectedVideo(song['youtube_link'])">
           Preview
