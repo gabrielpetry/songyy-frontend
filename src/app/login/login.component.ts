@@ -14,20 +14,16 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     if (this.authService.getLoggedUser())
-      return this.router.navigate(["playlist"]);
+      return this.router.navigate(["/playlist"]);
   }
 
   loginUser() {
-    let isLoggedIn = this.authService
-      .doLogin(this.formInfo)
-      .subscribe(authUser => {
-        console.log(authUser);
+    this.authService.doLogin(this.formInfo).subscribe(authUser => {
+      if (!authUser.token) return false;
 
-        if (!authUser.token) return false;
+      this.authService.setLoggedUser(authUser);
 
-        this.authService.setLoggedUser(authUser);
-        return this.router.navigate(["playlist"]);
-      });
-    if (isLoggedIn) return this.router.navigate(["playlist"]);
+      return this.router.navigate(["/playlist"]);
+    });
   }
 }
