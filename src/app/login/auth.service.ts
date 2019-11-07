@@ -23,13 +23,14 @@ export class AuthService extends Service {
     this.loggedUser = loggedUser;
     localStorage.setItem("loggedUser", JSON.stringify(loggedUser));
     localStorage.setItem("token", loggedUser.token);
+    this.setToken(loggedUser.token);
     return;
   }
 
   getLoggedUser(): LoggedUser {
     const loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
     if (loggedUser && !this.loggedUser) {
-      this.loggedUser = loggedUser;
+      this.setLoggedUser(loggedUser);
     }
     return this.loggedUser;
   }
