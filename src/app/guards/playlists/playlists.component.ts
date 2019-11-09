@@ -1,9 +1,11 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, TemplateRef } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { PlaylistsService } from "../../services/playlists.service";
 import { Playlist } from "../../models/playlist";
 import { Guild } from "../../models/guild";
 import { GuildService } from "../../services/guild.service";
+
+import { BsModalService, BsModalRef } from "ngx-bootstrap/modal";
 
 @Component({
   selector: "app-playlists",
@@ -14,10 +16,12 @@ export class PlaylistsComponent implements OnInit {
   playlists: Playlist[];
   guilds: Guild[];
   formInfo: any = {};
+  modalRef: BsModalRef;
 
   constructor(
     private playlistService: PlaylistsService,
-    private guildService: GuildService
+    private guildService: GuildService,
+    private modalService: BsModalService
   ) {}
 
   ngOnInit() {
@@ -45,5 +49,9 @@ export class PlaylistsComponent implements OnInit {
     this.playlistService
       .saveNewPlaylist({ comment, name, guild_id: guildId })
       .subscribe(data => this.updatePlaylists());
+  }
+
+  openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template);
   }
 }

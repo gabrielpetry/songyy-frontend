@@ -10,6 +10,8 @@ import { SongManagerComponent } from "./guards/song-manager/song-manager.compone
 import { LoginComponent } from "./login/login.component"; // Adicionei aqui
 import { AuthService } from "./login/auth.service";
 import { AuthGuard } from "./guards/auth.guard";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { ModalModule } from "ngx-bootstrap/modal";
 
 @NgModule({
   declarations: [
@@ -18,7 +20,14 @@ import { AuthGuard } from "./guards/auth.guard";
     SongManagerComponent,
     LoginComponent
   ],
-  imports: [BrowserModule, FormsModule, AppRoutingModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    AppRoutingModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    ModalModule.forRoot()
+  ],
   providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
