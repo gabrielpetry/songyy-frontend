@@ -39,7 +39,7 @@
     </div>
 
     <div class="col-auto">
-      <input class="btn btn-primary mb-1" cltype="submit" value="save" />
+      <input class="btn btn-primary mb-1" type="submit" value="save" />
     </div>
   </div>
 </form>
@@ -65,7 +65,10 @@
     <th scope="col">Actions</th>
   </thead>
   <tbody>
-    <tr *ngFor="let song of songs" [ngClass]="{ deactivated: !song.active }">
+    <tr
+      *ngFor="let song of songs"
+      [ngClass]="{ 'table-secondary': !song.active }"
+    >
       <td>{{ song.active }}</td>
       <td>{{ song.order }}</td>
       <td>{{ song["youtube_link"] }}</td>
