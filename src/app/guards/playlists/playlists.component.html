@@ -28,6 +28,7 @@
 <table>
   <thead>
     <th>Playlist Name</th>
+    <th>Guilds</th>
     <th>Comment</th>
     <th>Actions</th>
   </thead>
@@ -35,6 +36,7 @@
   <tbody>
     <tr *ngFor="let playlist of playlists">
       <td>{{ playlist.name }}</td>
+      <td>{{ playlist.guild["guild_name"] }}</td>
       <td>{{ playlist.comment }}</td>
       <td>
         <a routerLink="{{ playlist.name }}">Modify songs</a>
