@@ -39,7 +39,9 @@
       <td>{{ playlist.guild["guild_name"] }}</td>
       <td>{{ playlist.comment }}</td>
       <td>
-        <a routerLink="{{ playlist.name }}">Modify songs</a>
+        <a routerLink="{{ playlist.name }}/{{ playlist.guild['guild_id'] }}"
+          >Modify songs</a
+        >
       </td>
       <button
         type="button"
