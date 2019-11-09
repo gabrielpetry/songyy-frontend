@@ -14,7 +14,8 @@ export class SongManagerComponent implements OnInit {
   selectedVideo: any = "";
   // playlistName: string;
   formInfo: any = {};
-  playlistName = this.route.snapshot.paramMap.get("id");
+  playlistName = this.route.snapshot.paramMap.get("playlistName");
+  guildId = this.route.snapshot.paramMap.get("guildId");
   id: string;
 
   constructor(
@@ -29,11 +30,13 @@ export class SongManagerComponent implements OnInit {
   }
 
   updatePlaylist() {
-    this.playlistService.getPlaylistSongs(this.playlistName).subscribe(data => {
-      console.log("updated songs in playlist", data);
-      this.songs = data[0].songs;
-      this.id = data[0]._id;
-    });
+    this.playlistService
+      .getPlaylistSongs(this.playlistName, this.guildId)
+      .subscribe(data => {
+        console.log("updated songs in playlist", data);
+        this.songs = data[0].songs;
+        this.id = data[0]._id;
+      });
   }
 
   changeSelectedVideo(newLink: string) {
