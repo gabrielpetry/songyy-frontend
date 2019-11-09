@@ -29,20 +29,19 @@ export class PlaylistsComponent implements OnInit {
 
   updatePlaylists() {
     this.playlistService.get().subscribe(data => {
+      console.log(data);
       this.playlists = data.playlists;
     });
   }
 
   getGuilds() {
     this.guildService.get().subscribe(data => {
-      console.log(data);
       this.guilds = data.guilds;
     });
   }
 
   saveNewPlaylist() {
     const { comment, name, guildId } = this.formInfo;
-    console.log(this.formInfo);
     this.playlistService
       .saveNewPlaylist({ comment, name, guild_id: guildId })
       .subscribe(data => this.updatePlaylists());
