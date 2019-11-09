@@ -1,29 +1,47 @@
-<h1>{{ playlistName }}</h1>
-<p style="margin-top: -40px;padding: 0; color: #c2c2c2">
+<h1 class="display-1">{{ playlistName }}</h1>
+<p>
   Alter songs in this playlist
 </p>
 
 <form (ngSubmit)="saveNewSong()">
-  <div class="form-group">
-    <label for="youtube_link">Youtube link:</label>
-    <input
-      type="text"
-      name="youtube_link"
-      [(ngModel)]="formInfo.youtube_link"
-    />
-  </div>
+  <div class="form-row">
+    <div class="col-auto">
+      <label class="sr-only" for="youtube_link">Youtube link</label>
+      <input
+        type="text"
+        name="youtube_link"
+        [(ngModel)]="formInfo.youtube_link"
+        placeholder="Youtube link"
+        class="form-control mb-2"
+      />
+    </div>
 
-  <div class="from-group">
-    <label for="comment">Comment:</label>
-    <input type="text" name="comment" [(ngModel)]="formInfo.comment" />
-  </div>
+    <div class="col-auto">
+      <label class="sr-only" for="comment">Comment</label>
+      <input
+        class="form-control mb-2"
+        placeholder="Comment"
+        type="text"
+        name="comment"
+        [(ngModel)]="formInfo.comment"
+      />
+    </div>
 
-  <div class="form-group">
-    <label for="order">Order:</label>
-    <input type="number" name="order" [(ngModel)]="formInfo.order" />
-  </div>
+    <div class="col-auto">
+      <label class="sr-only" for="order">Order</label>
+      <input
+        class="form-control mb-2"
+        placeholder="Order"
+        type="number"
+        name="order"
+        [(ngModel)]="formInfo.order"
+      />
+    </div>
 
-  <input type="submit" value="save" />
+    <div class="col-auto">
+      <input class="btn btn-primary mb-1" cltype="submit" value="save" />
+    </div>
+  </div>
 </form>
 
 <h3>Song preview</h3>
@@ -38,13 +56,13 @@
   style="float: right; position: absolute; right: 0; top: 10px"
 ></iframe>
 
-<table>
+<table class="table table-stripped">
   <thead>
-    <th>Active</th>
-    <th>Order</th>
-    <th>Youtube_link</th>
-    <th>Comment</th>
-    <th>Actions</th>
+    <th scope="col">Active</th>
+    <th scope="col">Order</th>
+    <th scope="col">Youtube_link</th>
+    <th scope="col">Comment</th>
+    <th scope="col">Actions</th>
   </thead>
   <tbody>
     <tr *ngFor="let song of songs" [ngClass]="{ deactivated: !song.active }">
@@ -53,16 +71,28 @@
       <td>{{ song["youtube_link"] }}</td>
       <td>{{ song.comment }}</td>
       <td>
-        <button class="btn" (click)="toggleSongStatus(song._id, song.active)">
+        <button
+          class="btn btn-sm btn-outline-primary"
+          (click)="toggleSongStatus(song._id, song.active)"
+        >
           ToggleSongStatus
         </button>
-        <button class="btn btn-danger" (click)="deleteSong(song._id)">
+        <button
+          class="btn btn-sm btn-outline-danger"
+          (click)="deleteSong(song._id)"
+        >
           Remove
         </button>
-        <button class="btn" (click)="changeSongOrder(song._id)">
+        <button
+          class="btn btn-sm btn-outline-primary"
+          (click)="changeSongOrder(song._id)"
+        >
           ChangeOrder
         </button>
-        <button class="btn" (click)="changeSelectedVideo(song['youtube_link'])">
+        <button
+          class="btn btn-sm btn-outline-primary"
+          (click)="changeSelectedVideo(song['youtube_link'])"
+        >
           Preview
         </button>
       </td>

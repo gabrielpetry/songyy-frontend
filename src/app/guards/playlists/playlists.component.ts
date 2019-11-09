@@ -49,10 +49,17 @@ export class PlaylistsComponent implements OnInit {
     const { comment, name, guildId } = this.formInfo;
     this.playlistService
       .saveNewPlaylist({ comment, name, guild_id: guildId })
-      .subscribe(data => this.updatePlaylists());
+      .subscribe(data => {
+        this.updatePlaylists();
+        this.modalService.hide(1);
+      });
   }
 
-  openModal(template: TemplateRef<any>, guild_id: string, oldPlaylistId) {
+  openModal(
+    template: TemplateRef<any>,
+    guild_id: string = "",
+    oldPlaylistId: string = ""
+  ) {
     this.formInfo.oldPlaylistId = oldPlaylistId;
     this.filteredGuilds = this.guilds.filter(guild => guild._id != guild_id);
     this.modalRef = this.modalService.show(template);
