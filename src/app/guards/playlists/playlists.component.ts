@@ -59,11 +59,6 @@ export class PlaylistsComponent implements OnInit {
   }
 
   clonePlaylist() {
-    console.log(this.formInfo);
-    console.log({
-      target: this.formInfo.cloneNewGuildId,
-      origin: this.formInfo.oldPlaylistId
-    });
     this.playlistService
       .clonePlaylist({
         target: this.formInfo.cloneNewGuildId,
@@ -71,6 +66,8 @@ export class PlaylistsComponent implements OnInit {
       })
       .subscribe(data => {
         console.log(data);
+        this.updatePlaylists();
+        this.modalService.hide(1);
       });
   }
 }
