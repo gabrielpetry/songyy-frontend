@@ -11,7 +11,7 @@ const routes: Routes = [
   { path: "login", component: LoginComponent },
   { path: "playlist", component: PlaylistsComponent, canActivate: [AuthGuard] },
   {
-    path: "playlist/:id",
+    path: "playlist/:playlistName/:guildId",
     component: SongManagerComponent,
     canActivate: [AuthGuard]
   }
