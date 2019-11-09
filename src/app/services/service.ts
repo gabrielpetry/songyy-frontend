@@ -4,8 +4,8 @@ import { HttpClient } from "@angular/common/http";
 
 @Injectable()
 export class Service {
-  private readonly API_URL = "http://localhost:3333";
-  // private readonly API_URL = "http://gabrielpetry.com.br:21142";
+  // private readonly API_URL = "http://localhost:3333";
+  private readonly API_URL = "https://gabrielpetry.com.br/v2";
 
   // private readonly token = "obsfuscated";
   private token: string = localStorage.getItem("token");
