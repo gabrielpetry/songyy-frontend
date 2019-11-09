@@ -15,6 +15,7 @@ import { BsModalService, BsModalRef } from "ngx-bootstrap/modal";
 export class PlaylistsComponent implements OnInit {
   playlists: Playlist[];
   guilds: Guild[];
+  filteredGuilds: Guild[];
   formInfo: any = {};
   modalRef: BsModalRef;
 
@@ -51,7 +52,25 @@ export class PlaylistsComponent implements OnInit {
       .subscribe(data => this.updatePlaylists());
   }
 
-  openModal(template: TemplateRef<any>) {
+  openModal(template: TemplateRef<any>, guild_id: string, oldPlaylistId) {
+    this.formInfo.oldPlaylistId = oldPlaylistId;
+    this.filteredGuilds = this.guilds.filter(guild => guild._id != guild_id);
     this.modalRef = this.modalService.show(template);
+  }
+
+  clonePlaylist() {
+    console.log(this.formInfo);
+    console.log({
+      target: this.formInfo.cloneNewGuildId,
+      origin: this.formInfo.oldPlaylistId
+    });
+    this.playlistService
+      .clonePlaylist({
+        target: this.formInfo.cloneNewGuildId,
+        origin: this.formInfo.oldPlaylistId
+      })
+      .subscribe(data => {
+        console.log(data);
+      });
   }
 }

@@ -25,4 +25,11 @@ export class PlaylistsService extends Service {
       guild_id
     });
   }
+
+  clonePlaylist({ origin, target }) {
+    console.log(origin, target);
+    return this.sendPostRequest<Playlist>(`playlists/${origin}/clone`, {
+      guildId: target
+    });
+  }
 }

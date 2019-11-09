@@ -41,13 +41,16 @@
       <td>
         <a routerLink="{{ playlist.name }}">Modify songs</a>
       </td>
+      <button
+        type="button"
+        class="btn btn-primary"
+        (click)="openModal(template, playlist.guild._id, playlist._id)"
+      >
+        Clone playlist
+      </button>
     </tr>
   </tbody>
 </table>
-
-<button type="button" class="btn btn-primary" (click)="openModal(template)">
-  Create template modal
-</button>
 
 <ng-template #template>
   <div class="modal-header">
@@ -62,6 +65,25 @@
     </button>
   </div>
   <div class="modal-body">
-    This is a modal.
+    <h5>Copy this playlist to which guild?</h5>
+    <form (ngSubmit)="clonePlaylist()">
+      <div class="form-group">
+        <label for="guild_id">Select the target guild</label>
+        <br />
+        <select
+          required
+          name="guild_id"
+          id="guild_id"
+          [(ngModel)]="formInfo.cloneNewGuildId"
+        >
+          <option *ngFor="let guild of filteredGuilds" [value]="guild._id">{{
+            guild["guild_name"]
+          }}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <input class="btn btn-primary" type="submit" value="Clone" />
+      </div>
+    </form>
   </div>
 </ng-template>
