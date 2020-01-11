@@ -33,7 +33,14 @@
           class="btn btn-outline-info btn-sm"
           (click)="openModal(cloneToPlaylist, playlist.guild._id, playlist._id)"
         >
-          Clone playlist
+          Clone
+        </button>
+        <button
+          type="button"
+          class="btn btn-outline-danger btn-sm"
+          (click)="deletePlaylist(playlist._id)"
+        >
+          Remove
         </button>
       </td>
     </tr>

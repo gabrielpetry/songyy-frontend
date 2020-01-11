@@ -33,8 +33,8 @@ export class PlaylistsComponent implements OnInit {
   }
 
   updatePlaylists() {
-    this.playlistService.get().subscribe(data => {
-      console.log(data);
+    return this.playlistService.get().subscribe(data => {
+        console.log("data", data)
       this.playlists = data.playlists;
     });
   }
@@ -64,6 +64,17 @@ export class PlaylistsComponent implements OnInit {
     this.filteredGuilds = this.guilds.filter(guild => guild._id != guild_id);
     this.modalRef = this.modalService.show(template);
   }
+
+    deletePlaylist(
+        playlist_id: string = ""
+    ) {
+     this.playlistService
+      .deletePlaylist({ playlist_id })
+      .subscribe(data => {
+        console.log("delete playlist: ", data)
+        this.updatePlaylists();
+      });
+    }
 
   clonePlaylist() {
     this.playlistService

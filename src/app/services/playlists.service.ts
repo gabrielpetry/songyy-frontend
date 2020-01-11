@@ -31,6 +31,10 @@ export class PlaylistsService extends Service {
     });
   }
 
+    deletePlaylist({ playlist_id }) {
+      return this.sendDeleteRequest<Playlist[]>("playlists", playlist_id);
+  }
+
   clonePlaylist({ origin, target }) {
     console.log(origin, target);
     return this.sendPostRequest<Playlist>(`playlists/${origin}/clone`, {
