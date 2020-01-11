@@ -19,6 +19,12 @@ export class AuthService extends Service {
     });
   }
 
+    doLogout() {
+        this.setToken('');
+        localStorage.removeItem("loggedUser");
+        localStorage.removeItem("token");
+    }
+
   setLoggedUser(loggedUser: LoggedUser): void {
     this.loggedUser = loggedUser;
     localStorage.setItem("loggedUser", JSON.stringify(loggedUser));
