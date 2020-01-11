@@ -13,6 +13,7 @@ import { AuthGuard } from "./guards/auth.guard";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { ModalModule } from "ngx-bootstrap/modal";
 import { RegistrationComponent } from './registration/registration.component';
+import { LogoutComponent } from './guards/logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { RegistrationComponent } from './registration/registration.component';
     PlaylistsComponent,
     SongManagerComponent,
     LoginComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,
